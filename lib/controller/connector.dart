@@ -5,7 +5,6 @@ class Connector {
     try {
       Dio dio = Dio();
       var response = await dio.get(url);
-      print(response);
       return response;
     } on DioError catch (error) {
       print(error);

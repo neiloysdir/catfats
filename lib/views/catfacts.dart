@@ -1,6 +1,7 @@
 import 'package:catfacts/controller/datafetcher.dart';
 import 'package:flutter/material.dart';
 import 'package:catfacts/models/data.dart';
+import 'package:lottie/lottie.dart';
 
 class CatFactsHomeScreen extends StatefulWidget {
   const CatFactsHomeScreen({Key? key}) : super(key: key);
@@ -31,46 +32,54 @@ class _CatFactsHomeScreenState extends State<CatFactsHomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Center(
-                child: Text(
-                  "Cat Facts!",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
-                ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            const Spacer(
+              flex: 2,
+            ),
+            RotationTransition(
+              turns: const AlwaysStoppedAnimation(-8 / 360),
+              child: Image.asset(
+                "assets/images/catfact.png",
+                width: 300,
               ),
-              Center(
-                child: Text(
-                  catFact.fact,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              MaterialButton(
-                onPressed: () {
-                  fetchCatFact();
-                },
-                elevation: 0,
-                color: Colors.red,
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                  child: Text(
-                    "Get Another Cat Fact!!",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
+            ),
+            Lottie.asset('assets/images/14476-rainbow-cat-remix.json'),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30.0),
+              child: Center(
+                child: Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        catFact.fact,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
-                  ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: IconButton(
+                        onPressed: () {
+                          fetchCatFact();
+                        },
+                        icon: const Icon(
+                          Icons.autorenew,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            const Spacer(
+              flex: 2,
+            ),
+          ],
         ),
       ),
     );
