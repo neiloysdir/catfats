@@ -32,54 +32,59 @@ class _CatFactsHomeScreenState extends State<CatFactsHomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            const Spacer(
-              flex: 2,
-            ),
-            RotationTransition(
-              turns: const AlwaysStoppedAnimation(-8 / 360),
-              child: Image.asset(
-                "assets/images/catfact.png",
-                width: 300,
+        backgroundColor: Colors.white,
+        body: Container(
+          color: Colors.white,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              const Spacer(
+                flex: 2,
               ),
-            ),
-            Lottie.asset('assets/images/14476-rainbow-cat-remix.json'),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30.0),
-              child: Center(
-                child: Row(
-                  children: [
-                    Flexible(
-                      child: Text(
-                        catFact.fact,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10.0),
-                      child: IconButton(
-                        onPressed: () {
-                          fetchCatFact();
-                        },
-                        icon: const Icon(
-                          Icons.autorenew,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                  ],
+              RotationTransition(
+                turns: const AlwaysStoppedAnimation(-8 / 360),
+                child: Image.asset(
+                  "assets/images/catfact.png",
+                  width: 300,
                 ),
               ),
-            ),
-            const Spacer(
-              flex: 2,
-            ),
-          ],
+              Lottie.asset('assets/images/14476-rainbow-cat-remix.json'),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                child: Center(
+                  child: Row(
+                    children: [
+                      Flexible(
+                        child: Text(
+                          catFact.fact,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0),
+                        child: IconButton(
+                          onPressed: () {
+                            fetchCatFact();
+                          },
+                          icon: const Icon(
+                            Icons.autorenew,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const Spacer(
+                flex: 2,
+              ),
+            ],
+          ),
         ),
       ),
     );
